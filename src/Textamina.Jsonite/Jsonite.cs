@@ -288,7 +288,7 @@ namespace Textamina.Jsonite
                 {
                     RaiseUnexpected("while parsing an object"); // unit-test: 020-test-error-object4.txt
                 }
-                else if (expectMember)
+                else if (expectMember && !settings.AllowTrailingCommas)
                 {
                     RaiseUnexpected("while parsing an object. Expecting a STRING after a comma ','");  // unit-test: 020-test-error-object5.txt
                 }
@@ -344,7 +344,7 @@ namespace Textamina.Jsonite
                 {
                     RaiseUnexpected("while parsing an array"); // unit-test: 030-test-error-array1.txt
                 }
-                else if (expectItem)
+                else if (expectItem && !settings.AllowTrailingCommas)
                 {
                     RaiseUnexpected("while parsing an array. Expecting a STRING, NUMBER, OBJECT, ARRAY, true, false or null after a comma ','"); // unit-test: 030-test-error-array3.txt
                 }
@@ -1241,11 +1241,15 @@ namespace Textamina.Jsonite
         public bool ParseValuesAsStrings { get; set; }
 
         /// <summary>
+        /// Gets or sets a value indicating whether to allow trailing commas in object and array declaration.
+        /// </summary>
+        public bool AllowTrailingCommas { get; set; }
+
+        /// <summary>
         /// Gets or sets the reflector used for interfacing the json text to an object graph.
         /// </summary>
         public IJsonReflector Reflector { get; set; }
     }
-
 
     /// <summary>
     /// A callback interface used during the serialization and deserialization.
