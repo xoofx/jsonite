@@ -33,6 +33,10 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Textamina.Jsonite">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\artifacts\bin\Textamina.Jsonite\$(Configuration)\portable-net40+sl50+win+wpa81+wp80\Textamina.Jsonite.dll</HintPath>
+    </Reference>
     <Reference Include="BenchmarkDotNet, Version=0.8.2.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\BenchmarkDotNet.0.8.2\lib\net40\BenchmarkDotNet.dll</HintPath>
       <Private>True</Private>
@@ -83,12 +87,6 @@
     <Content Include="test.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\Textamina.Jsonite\Textamina.Jsonite.csproj">
-      <Project>{8a58a7e2-627c-4f41-933f-5ac92adfab48}</Project>
-      <Name>Textamina.Jsonite</Name>
-    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

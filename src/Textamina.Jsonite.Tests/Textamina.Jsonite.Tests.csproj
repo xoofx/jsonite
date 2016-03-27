@@ -36,6 +36,10 @@
     <StartupObject />
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Textamina.Jsonite">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\artifacts\bin\Textamina.Jsonite\$(Configuration)\portable-net40+sl50+win+wpa81+wp80\Textamina.Jsonite.dll</HintPath>
+    </Reference>
     <Reference Include="Newtonsoft.Json, Version=8.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
       <HintPath>..\packages\Newtonsoft.Json.8.0.2\lib\net45\Newtonsoft.Json.dll</HintPath>
       <Private>True</Private>
@@ -66,12 +70,6 @@
   <ItemGroup>
     <None Include="App.config" />
     <None Include="packages.config" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\Textamina.Jsonite\Textamina.Jsonite.csproj">
-      <Project>{8a58a7e2-627c-4f41-933f-5ac92adfab48}</Project>
-      <Name>Textamina.Jsonite</Name>
-    </ProjectReference>
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>

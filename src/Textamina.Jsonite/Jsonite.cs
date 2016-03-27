@@ -359,7 +359,7 @@ namespace Textamina.Jsonite
             private string ParseString()
             {
                 NextChar(); // Skip " but don't skip whitespaces
-                builder.Clear();
+                builder.Length = 0;
                 while (true)
                 {
                     // Handle escape
@@ -458,7 +458,7 @@ namespace Textamina.Jsonite
                 bool isFloat = false;
                 bool hasExponent = false;
                 bool isNegative = false;
-                builder.Clear();
+                builder.Length = 0;
                 if (c == '-')
                 {
                     isNegative = true;
@@ -700,7 +700,7 @@ namespace Textamina.Jsonite
                 } while (IsWhiteSpace(c));
             }
 
-            [MethodImpl(MethodImplOptions.AggressiveInlining)]
+            [MethodImpl((MethodImplOptions)256)]
             private void NextChar()
             {
                 var nextChar = Reader.Read();
@@ -730,19 +730,19 @@ namespace Textamina.Jsonite
                 c = (char)nextChar;
             }
 
-            [MethodImpl(MethodImplOptions.AggressiveInlining)]
+            [MethodImpl((MethodImplOptions)256)]
             private static bool IsWhiteSpace(char c)
             {
                 return c == ' ' || c == '\n' || c == '\t' || c == '\r';
             }
 
-            [MethodImpl(MethodImplOptions.AggressiveInlining)]
+            [MethodImpl((MethodImplOptions)256)]
             private static bool IsDigit(char c)
             {
                 return c >= '0' && c <= '9';
             }
 
-            [MethodImpl(MethodImplOptions.AggressiveInlining)]
+            [MethodImpl((MethodImplOptions)256)]
             private static int HexToInt(char c)
             {
                 if (c >= '0' && c <= '9')
@@ -756,7 +756,7 @@ namespace Textamina.Jsonite
                 return c - 'A' + 10;
             }
 
-            [MethodImpl(MethodImplOptions.AggressiveInlining)]
+            [MethodImpl((MethodImplOptions)256)]
             private static bool IsHex(char c)
             {
                 return (c >= '0' && c <= '9') ||
@@ -914,7 +914,7 @@ namespace Textamina.Jsonite
                 writer.Write(']');
             }
 
-            [MethodImpl(MethodImplOptions.AggressiveInlining)]
+            [MethodImpl((MethodImplOptions)256)]
             private void Indent()
             {
                 for (int i = 0; i < indentCount * indentLevel; i++)
@@ -966,7 +966,7 @@ namespace Textamina.Jsonite
                                 throw new ArgumentException($"Invalid control character '{EscapeChar(c)}' found in string");
                             }
 
-                            if (char.IsHighSurrogate(c) || char.IsLowSurrogate(c))
+                            if (IsHighSurrogate(c) || IsLowSurrogate(c))
                             {
                                 writer.Write('\\');
                                 writer.Write('u');
@@ -982,6 +982,23 @@ namespace Textamina.Jsonite
                 writer.Write('"');
             }
         }
+
+        [MethodImpl((MethodImplOptions)256)]
+        private static bool IsHighSurrogate(char c)
+        {
+            if ((int)c >= 55296)
+                return (int)c <= 56319;
+            return false;
+        }
+
+        [MethodImpl((MethodImplOptions)256)]
+        private static bool IsLowSurrogate(char c)
+        {
+            if ((int)c >= 56320)
+                return (int)c <= 57343;
+            return false;
+        }
+
 
         private static string EscapeChar(char chr)
         {
@@ -1011,7 +1028,7 @@ namespace Textamina.Jsonite
                 case '\v':
                     return @"\v";
                 default:
-                    if (char.IsControl(chr) || char.IsHighSurrogate(chr) || char.IsLowSurrogate(chr))
+                    if (char.IsControl(chr) || IsHighSurrogate(chr) || IsLowSurrogate(chr))
                         return @"\u" + ((int)chr).ToString("X4");
                     else
                         return new string(chr, 1);
@@ -1479,4 +1496,13 @@ namespace Textamina.Jsonite
             return (IEnumerable)array;
         }
     }
+#if NETPRE45
+    static class ReflectionHelper
+    {
+        public static Type GetTypeInfo(this Type type)
+        {
+            return type;
+        }
+    }
+#endif
 }
