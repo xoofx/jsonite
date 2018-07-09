@@ -1,21 +1,21 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 14
-VisualStudioVersion = 14.0.24720.0
+# Visual Studio 15
+VisualStudioVersion = 15.0.27703.2026
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "Textamina.Jsonite", "Textamina.Jsonite\Textamina.Jsonite.xproj", "{E7916EBE-D9C6-4FE6-B9C4-9A85E33707F7}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Textamina.Jsonite.Tests", "Textamina.Jsonite.Tests\Textamina.Jsonite.Tests.csproj", "{A0C5CB5F-5568-40AB-B945-D6D2664D51B0}"
-	ProjectSection(ProjectDependencies) = postProject
-		{E7916EBE-D9C6-4FE6-B9C4-9A85E33707F7} = {E7916EBE-D9C6-4FE6-B9C4-9A85E33707F7}
-	EndProjectSection
-EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Build", "Build", "{061866E2-005C-4D13-A338-EA464BBEC60F}"
 	ProjectSection(SolutionItems) = preProject
 		..\license.txt = ..\license.txt
 	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Textamina.Jsonite.Benchmarks", "Textamina.Jsonite.Benchmarks\Textamina.Jsonite.Benchmarks.csproj", "{39E21907-05A1-4C5C-B83E-EB225F88F34D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Jsonite", "Jsonite\Jsonite.csproj", "{E7916EBE-D9C6-4FE6-B9C4-9A85E33707F7}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Jsonite.Tests", "Jsonite.Tests\Jsonite.Tests.csproj", "{A0C5CB5F-5568-40AB-B945-D6D2664D51B0}"
+	ProjectSection(ProjectDependencies) = postProject
+		{E7916EBE-D9C6-4FE6-B9C4-9A85E33707F7} = {E7916EBE-D9C6-4FE6-B9C4-9A85E33707F7}
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Jsonite.Benchmarks", "Jsonite.Benchmarks\Jsonite.Benchmarks.csproj", "{39E21907-05A1-4C5C-B83E-EB225F88F34D}"
 	ProjectSection(ProjectDependencies) = postProject
 		{E7916EBE-D9C6-4FE6-B9C4-9A85E33707F7} = {E7916EBE-D9C6-4FE6-B9C4-9A85E33707F7}
 	EndProjectSection
@@ -41,5 +41,8 @@ Global
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {AE828436-E87F-4F94-ACCA-38F17DAF9005}
 	EndGlobalSection
 EndGlobal

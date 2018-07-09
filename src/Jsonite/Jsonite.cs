@@ -21,6 +21,7 @@
 // CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY,
 // OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
 // OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -30,6 +31,9 @@ using System.Reflection;
 using System.Runtime.CompilerServices;
 using System.Text;
 
+[assembly:InternalsVisibleTo("Jsonite.Benchmarks")]
+[assembly:InternalsVisibleTo("Jsonite.Tests")]
+    
 // ----------------------------------------------------------------------------
 // This is a single file version of a fast, simple and accurate JSON serializer 
 // and deserializer.
@@ -47,7 +51,7 @@ using System.Text;
 // - Initial version, serializer and deserializer to a simple object 
 //   graph. Method for validating a json text.
 // ----------------------------------------------------------------------------
-namespace Textamina.Jsonite
+namespace Jsonite
 {
     /// <summary>
     /// A JSON parser and reflector to Dictionary/List.
@@ -1397,7 +1401,7 @@ namespace Textamina.Jsonite
     /// <summary>
     /// The default implementation of <see cref="IJsonReflector"/> that allows to deserialize a JSON text to a generic <see cref="IDictionary{TKey,TValue}"/> <see cref="JsonObject"/> or <see cref="JsonArray"/>.
     /// </summary>
-    /// <seealso cref="Textamina.Jsonite.IJsonReflector" />
+    /// <seealso cref="IJsonReflector" />
 #if JSONITE_PUBLIC
     public
 #else
