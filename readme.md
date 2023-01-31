@@ -23,7 +23,7 @@ Jsonite is easily embeddable for quickly decoding/encoding JSON without relying 
 
 As this library is intended to be embedded and compiled directly from your project, we don't provide a nuget package.
 
-Instead, you can for example use this repository as a git sub-module of your project and reference directly the file [`Jsonite.cs`](http://github.com/textamina/jsonite/tree/master/src/Textamina.Jsonite/Jsonite.cs)
+Instead, you can for example use this repository as a git sub-module of your project and reference directly the file [`Jsonite.cs`](https://github.com/xoofx/jsonite/blob/master/src/Jsonite/Jsonite.cs)
 
 The code is compatible with `PCL .NET 4.5+`, `CoreCLR`, `CoreRT` and `UWP10`.
 
